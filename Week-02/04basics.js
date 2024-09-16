@@ -17,7 +17,14 @@ class Rectangle{
     }
 }
 
-const rec = 
-new Rectangle(2,4)
+const rec = new Rectangle(2,4)
 rec.area()
 rec.details()
+
+const now  = new Date();
+console.log(now.getDay());
+
+const map = new Map
+map.set('name','Alice');
+console.log(map.get('name'));
+
