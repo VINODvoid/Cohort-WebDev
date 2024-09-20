@@ -3,30 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>State Derived Frontend</title>
+    <title>State Driven Frontend</title>
 </head>
 <body>
     <h1>Todo-List</h1>
-    <input type="text" placeholder="Enter the Task" id="input">
-    <button onclick="addTodo()">Add Task</button>
+    <input type="text"  id="input">
+    <button onclick="addTodo()">Add</button>
     <div id="todoContainer"></div>
 </body>
 <script>
-    let todos =[
-        {id:1,title:"Go to Gym"},
-        {id:2,title:"Walk 3 Km"}
-        ]
+    let todos = [
+        {
+            id:1,
+            task:"Walk 4 miles",
+        },
+        {
+            id : 2,
+            task:"Drink water every 15 min",
+        }
+    ]
     let index = 3;
     function render(){
         const todoContainer = document.getElementById("todoContainer");
-        todoContainer.innerHTML ="";
+        todoContainer.innerHTML = "";
         todos.forEach(function(todo){
             const divElement = document.createElement("div");
-            divElement.setAttribute("id",`todo-${todo.id}`);
             const spanElement = document.createElement("span");
-            spanElement.innerHTML = todo.title;
+            spanElement.innerHTML = todo.task;
             const buttonElement = document.createElement("button");
-            buttonElement.innerHTML = "Delete"
+            buttonElement.innerHTML = "Delete";
             buttonElement.onclick = function(){
                 deleteTodo(todo.id);
             }
@@ -36,21 +41,15 @@
         })
     }
     function addTodo(){
-        const inputValue = document.querySelector("input").value;
-        if(inputValue.trim() === "")
-        {
-            alert("task cannot be empty");
-            return;
-        }
-        const newTodo  = {id:index++,title:inputValue};
-        todos.push(newTodo);
-        document.getElementById("input").value = "";
+        const inputValue = document.getElementById("input").value;
+        todos.push({id:index++,task:inputValue});
         render();
+
     }
-    function deleteTodo(id)
-    {
-        todos= todos.filter(todo => todo.id !== id );
+    function deleteTodo(id){
+        todos = todos.filter(todo => todo.id !== id);
         render();
+
     }
 
     render();
