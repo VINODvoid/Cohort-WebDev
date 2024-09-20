@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>State Derived Frontend</title>
+</head>
+<body>
+    <h1>Todo-List</h1>
+    <input type="text" placeholder="Enter the Task" id="input">
+    <button onclick="addTodo()">Add Task</button>
+    <div id="todoContainer"></div>
+</body>
+<script>
+    let todos =[
+        {id:1,title:"Go to Gym"},
+        {id:2,title:"Walk 3 Km"}
+        ]
+    let index = 3;
+    function render(){
+        const todoContainer = document.getElementById("todoContainer");
+        todoContainer.innerHTML ="";
+        todos.forEach(function(todo){
+            const divElement = document.createElement("div");
+            divElement.setAttribute("id",`todo-${todo.id}`);
+            const spanElement = document.createElement("span");
+            spanElement.innerHTML = todo.title;
+            const buttonElement = document.createElement("button");
+            buttonElement.innerHTML = "Delete"
+            buttonElement.onclick = function(){
+                deleteTodo(todo.id);
+            }
+            divElement.appendChild(spanElement);
+            divElement.appendChild(buttonElement);
+            todoContainer.appendChild(divElement);
+        })
+    }
+    function addTodo(){
+        const inputValue = document.querySelector("input").value;
+        if(inputValue.trim() === "")
+        {
+            alert("task cannot be empty");
+            return;
+        }
+        const newTodo  = {id:index++,title:inputValue};
+        todos.push(newTodo);
+        document.getElementById("input").value = "";
+        render();
+    }
+    function deleteTodo(id)
+    {
+        todos= todos.filter(todo => todo.id !== id );
+        render();
+    }
+
+    render();
+</script>
+</html>
