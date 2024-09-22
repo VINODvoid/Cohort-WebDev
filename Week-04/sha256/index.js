@@ -1,3 +1,6 @@
+// it is web3 assignment
+
+
 const crypto = require('crypto');
 
 function customSha256(prefix){
