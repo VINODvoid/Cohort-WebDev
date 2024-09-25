@@ -14,6 +14,8 @@ app.get('/',function(req,res){
     const ans = checkSum(a);
     res.send(ans.toString())
 })
+
+
 app.listen(8000,function () {
     console.log("Server is listening on port ",8000);
     })
