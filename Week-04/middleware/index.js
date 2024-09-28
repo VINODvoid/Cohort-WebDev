@@ -13,18 +13,35 @@ function oldEnough(age)
     }
 }
 
-
-app.get("/ride1",function(req,res){
+function oldEnoughMiddleware(req,res,next)
+{
     const age = req.query.age;
-    if(oldEnough(age))
-    {
-        res.send("you can go to ride 1")
+    if(age>=14){
+        next();
     }
     else{
         res.status(411).json({
             message : "Not old enough for this ride"
         })
     }
+}
+
+// First approach to add middlewre to the routes 
+// app.get("/ride1",oldEnoughMiddleware,function(req,res){
+//         res.send("you can go to ride 1")
+// })
+// app.get("/ride2",oldEnoughMiddleware,function(req,res){
+//         res.send("you can go to ride 2")
+// })
+
+// Second Approach to set globally set middleware for all routes
+app.use(oldEnoughMiddleware);
+
+app.get("/ride1",function(req,res){
+        res.send("you can go to ride 1")
+})
+app.get("/ride2",function(req,res){
+        res.send("you can go to ride 2")
 })
 app.listen(3000,function(){
     console.log("http://localhost:",3000);
