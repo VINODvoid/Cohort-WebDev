@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> CORS</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.7.7/axios.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
+<body>
+        <div id="sum">
+            <label for="a">Enter One Number</label>
+            <input type="number" id="a" required>
+            <br>
+            <label for="a">Enter Another Number</label>
+            <input type="number" id="b" required>
+            <br>
+            <button onclick="sumCalculator()">Submit</button>
+
+        </div>
+</body>
+<script>
+    async function sumCalculator() {
+      const api = await axios.post("http://localhost:3000/sum",{
+        a:document.getElementById('a').value,
+        b:document.getElementById('b').value,
+        
+      })
+      const ans = api.data.sum;
+      const para =document.createElement("p")
+      para.innerHTML = ans;
+      document.querySelector("body").appendChild(para);
+    } 
+    
+</script>
+</html>
