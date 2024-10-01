@@ -50,6 +50,23 @@ app.post("/sign-in",function(req,res){
 
 })
 
+app.get("/me",function(req,res){
+    const  mytoken = req.headers.token;
+    const foundUser = users.find(user => user.token == mytoken)
+    if(foundUser)
+    {
+        res.json({
+            username:foundUser.username,
+            password:foundUser.password,
+        })
+    }
+    else{
+        res.status(411).send({
+            message: "Not Authorised !"
+        })
+    }
+})
+
 app.listen(port,function(){
     console.log(`Server is running on http://localhost:${port}`);
     
