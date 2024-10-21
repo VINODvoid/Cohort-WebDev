@@ -1,0 +1,5 @@
+
+requirements are :
+create a mongoose account and create ur own cluster .
+install mongoose compass and create a database ,
+perform CRUD operations to it.
