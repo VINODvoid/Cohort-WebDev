@@ -15,5 +15,5 @@ Good to haves
 
 - Use cookies instead of JWT for auth
 - Add a rate limiting middleware
-- Frontend in ejs (low pri)
+- Frontend in ejs (low price and good ui)
 - Frontend in React
