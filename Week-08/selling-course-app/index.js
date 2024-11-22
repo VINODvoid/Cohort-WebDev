@@ -8,5 +8,13 @@ const app = express();
 app.use("/api/v1/user", userRouter);
 app.use("/api/v1/course", courseRouter);
 app.use("api/v1/admin", adminRouter);
-connectDB();
-app.listen(3000);
+connectDB()
+  .then(function () {
+    app.listen(process.env.PORT || 8080, function () {
+      console.log(`Server is running on port ${process.env.PORT}`);
+    });
+  })
+  .catch(function (error) {
+    console.log("Server as Crashed @@@!!!!!", error);
+    process.exit(1);
+  });
