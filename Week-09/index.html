@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Own React Counter</title>
+</head>
+<body>
+    <div id="counter" ></div>
+</body>
+<script>
+    let state = {
+        count:0,
+    }
+    function buttonLogic()
+    {
+        state.count++;
+        buttonrender();
+    }
+    function buttonrender()
+    {
+        document.getElementById("counter").innerHTML="";
+        const component = buttoncomponent(state.count);
+        document.getElementById("counter").appendChild(component);
+    }
+    function buttoncomponent(count)
+    {
+        const button = document.createElement("button");
+        button.innerHTML = `counter ${count}`;
+        button.setAttribute("onclick","buttonLogic()");
+        return button;
+    }
+    buttonrender();
+</script>
+</html>
