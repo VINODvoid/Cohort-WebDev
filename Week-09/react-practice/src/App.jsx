@@ -1,23 +1,31 @@
-import { useEffect, useState } from "react";
+import {useEffect,useState} from 'react';
 
-function App() {
+export default function App() {
+  const  [stopVariable,setStopVariable] = useState(true);
+  useEffect(()=>{
+    setInterval(()=>{
+      setStopVariable(stopVariable=>!stopVariable)
+    },5000)
+  },[])
   return (
-    <div>
-      <Counter />
+    <div className='App'>
+
+      {/* contditional rerendering */}
+      {stopVariable &&  <Counter/>}
+      Another condition 
+      {/* { counterCondition ? <Counter/>:null} */}
     </div>
   );
 }
 
-function Counter() {
-  const [count, setCount] = useState(0);
-
-  useEffect(() => {
-    setInterval(() => {
-      setCount((current) => current + 1); // Increment count
-    }, 1000);
-  }, []); // Empty dependency array ensures this runs only once
-
-  return <h1>{count}</h1>;
+function Counter()
+{
+  const [count , setCount ] = useState(0);
+  useEffect(()=>{
+    setInterval(function(){
+      setCount(count => count+1);
+    },1000);
+  },[])
+  return <div>{count}</div>
+  
 }
-
-export default App;
