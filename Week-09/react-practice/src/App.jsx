@@ -22,9 +22,17 @@ function Counter()
 {
   const [count , setCount ] = useState(0);
   useEffect(()=>{
-    setInterval(function(){
+    let clock = setInterval(function(){
+      console.log("Mounted");
       setCount(count => count+1);
+      
     },1000);
+    return function()
+    {
+      clearInterval(clock)
+      console.log("Unmounted");
+      
+    }
   },[])
   return <div>{count}</div>
   
