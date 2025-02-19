@@ -4,6 +4,12 @@ import './App.css'
 
 function App() {
   return (
+    // <div>
+    //   {/* <ToggleMessage/> */}
+    //   <Notification/>
+    //   <Notification/>
+    //   <Notification/>
+    // </div>
     <div style={{height:"100vh",width:"100vw",backgroundColor:"#dfe6e9",}}>
       <div style={{display:'flex',justifyContent:"center",}}>
         <div style={{margin:20}}>
@@ -57,7 +63,26 @@ function PostComponent({name, description , time , subTitle,image })
     </div>
   )
 }
+// Conditional Rendering
+// function ToggleMessage()
+// {
+//   const [isVisible,setIsVisible] = useState(false);
+//   return (
+//     <div>
+//       <button onClick={()=>setIsVisible(!isVisible)}>Toggle Message</button>
+//       {isVisible && <p>Message is visible</p>}
+//     </div>
+//   )
+// }
 
-
-
+// function Notification()
+// {
+//   const [notificationCount,setNotificationCount] = useState(0);
+//   return (
+//     <div>
+//       <button onClick={()=>setNotificationCount(notificationCount+1)}>Increase Count</button>
+//       {<p> {notificationCount}</p>}
+//     </div>
+//   )
+// }
 export default App
