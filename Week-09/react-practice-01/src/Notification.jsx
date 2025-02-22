@@ -14,6 +14,10 @@ function Notification(){
     useEffect(function(){
         setInterval(increaseCount, 1000);
     },[]);
+    useEffect(()=>{
+        console.log("Count is updated"+count);
+        
+    },[count])
 
     return (
         <div>
@@ -23,4 +27,4 @@ function Notification(){
     )
 }
 
-export default Notification;
+export default Notification; 
