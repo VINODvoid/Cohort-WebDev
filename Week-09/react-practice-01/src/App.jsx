@@ -1,13 +1,16 @@
 import { useState } from 'react'
-import {Clock} from 'lucide-react'
 import './App.css'
 import PostComponent from './Post';
 import Notification from './Notification';
+import Tab from './Tab';
+import Card from './Card';
+import MyComponent from './MyComponent';
 
 function App() {
   const [posts,setPosts] = useState([]);
   
   const postComponents = posts.map(post=>
+    // eslint-disable-next-line react/jsx-key
     <PostComponent 
     name={post.name} 
     description={post.description}
@@ -34,7 +37,8 @@ function App() {
     //   <Notification/>
     //   <Notification/>
     // </div>
-    <div style={{height:"100vh",width:"100vw",backgroundColor:"#dfe6e9",}}>
+    <div style={{height:"100%",width:"100%"}}>
+      <Tab/>
       <Notification/>
       
       <button onClick={addPost}>Add Post</button>
@@ -48,7 +52,18 @@ function App() {
           </div>
         </div>
     </div>
+    <div >
+      <Card ><div style={{color:""}}>hi there</div></Card>
+      <Card >
+        what do you want to do ?
+        <br />
+        <br />
+        <input placeholder='Enter the words you want'/>
+
+        </Card>
     </div>
+    <MyComponent/>
+    </div> 
   )
 }
 
