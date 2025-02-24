@@ -69,6 +69,9 @@ function App() {
       <ErrorComponent/>
     </ErrorBoundary>
       <ErrorComponent1/>
+      <ErrorBoundary>
+        <ErrorComponent2/>
+      </ErrorBoundary>
     </div> 
   )
 }
@@ -84,7 +87,10 @@ function ErrorComponent1()
       <h1>hi there</h1>
     </div>
   )
-  
+}
+function ErrorComponent2()
+{
+  throw new Error("some thing went wrong");
 }
 // Conditional Rendering
 // function ToggleMessage()
