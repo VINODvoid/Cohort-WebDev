@@ -5,6 +5,8 @@ import Notification from './Notification';
 import Tab from './Tab';
 import Card from './Card';
 import MyComponent from './MyComponent';
+import ErrorBoundary from '../ ErrorBoundary'
+
 
 function App() {
   const [posts,setPosts] = useState([]);
@@ -63,10 +65,27 @@ function App() {
         </Card>
     </div>
     <MyComponent/>
+    <ErrorBoundary>
+      <ErrorComponent/>
+    </ErrorBoundary>
+      <ErrorComponent1/>
     </div> 
   )
 }
-
+function ErrorComponent()
+{
+  throw  new Error("some thing ");
+  
+}
+function ErrorComponent1()
+{
+  return (
+    <div>
+      <h1>hi there</h1>
+    </div>
+  )
+  
+}
 // Conditional Rendering
 // function ToggleMessage()
 // {
