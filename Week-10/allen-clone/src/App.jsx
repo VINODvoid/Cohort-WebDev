@@ -5,7 +5,7 @@ function App() {
    <div>
    <Routes>
       <Route path='/' element={<AppLayout/>} >
-        <Route path='/courses' />
+        <Route path='/courses' element={<></>}/>
         <Route path='/test-series' />
         <Route path='/scholarships' />
         <Route path='/results' />
