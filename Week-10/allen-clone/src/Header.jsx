@@ -14,6 +14,8 @@ const Header = () => {
                     <li>Results</li>
                 </ul>
             </nav>
+
+            
         </div>
         <div style={{flex:0.1,backgroundColor:"blue"}}>ther</div>
     </div>
