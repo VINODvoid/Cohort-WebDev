@@ -1,15 +1,18 @@
+import { useRef } from "react"
 
 const Input = () => {
+    const inputRef = useRef();
     function focusInput()
     {
-        document.getElementById("name").focus()
+        // bad pratice on react 
+        // document.getElementById("name").focus()
+        inputRef.current.focus();
     }
   return (
     <div>
-        Sign up 
-        <input type="text" id="name"></input>
-        <input type="text" ></input>
-        <button onClick={focusInput}>Submit</button>
+        <input type="text" ref={inputRef} placeholder="Click the button to focus me "/>
+        
+        <button onClick={focusInput}>Focus the input</button>
     </div>
   )
 }
