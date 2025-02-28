@@ -1,4 +1,5 @@
 import {BrowserRouter , Routes , Route, Link, Outlet } from 'react-router-dom';
+import Input from './Input';
 
 function App() {
   return (
@@ -12,6 +13,8 @@ function App() {
           <Route path='/route-2' element={<Component2/>} />
           <Route path='/route-3' element={<Component3/>} />
           <Route path='/*' element={<PageNotFound/>} />
+          <Route path='/input' element={<Input/>} />
+          
         </Route>
       </Routes>
       </BrowserRouter>
@@ -41,6 +44,7 @@ function Header()
         <Link to={"/route-1"}>Route 1 </Link>
         <Link to={"/route-2"}>Route 2 </Link>
         <Link to={"/route-3"}>Route 3 </Link>
+        <Link to={"/input"}>Use Ref</Link>
     </>
   )
 }
