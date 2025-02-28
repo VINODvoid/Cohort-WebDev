@@ -1,6 +1,7 @@
 import {BrowserRouter , Routes , Route, Link, Outlet } from 'react-router-dom';
 import Input from './Input';
 import Scroll from './Scroll';
+import Clock from './Clock';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           <Route path='/*' element={<PageNotFound/>} />
           <Route path='/input' element={<Input/>} />
           <Route path='/scroll' element={<Scroll/>} />
+          <Route path='/clock' element={<Clock/>} />
           
         </Route>
       </Routes>
@@ -47,7 +49,8 @@ function Header()
         <Link to={"/route-2"}>Route 2 </Link>|
         <Link to={"/route-3"}>Route 3 </Link>|
         <Link to={"/input"}>Focus Input </Link>|
-        <Link to={"/Scroll"}>Scroll </Link>
+        <Link to={"/scroll"}>Scroll </Link>|
+        <Link to={"/clock"}>Clock </Link>
     </>
   )
 }
