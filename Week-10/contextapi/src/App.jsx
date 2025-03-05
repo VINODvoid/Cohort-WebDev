@@ -1,3 +1,7 @@
+import { useState } from 'react'
+import BulbOn from './assets/idea.png'
+import BulbOff from './assets/bulb.png'
+
 import './App.css'
 
 function App() {
@@ -12,22 +16,30 @@ function App() {
 
 function LightBulb()
 {
+  const [bulb,setBulb] = useState(true);
   return (
     <div>
-    <BulbState/>
-    <ToggleBulbState/>
+    <BulbState bulb={bulb}/>
+    <ToggleBulbState bulb={bulb} setBulb={setBulb}/>
     </div>
   )
 }
 
-function BulbState()
+function BulbState({bulb})
 {
   return <div>
-    BulbState
+    {bulb ? <>
+      <img src={BulbOn} alt=""  height={30}/>
+    </>:
+    <>
+    <img src={BulbOff} alt=""  height={30}/>
+    </>}
   </div>
 }
-function ToggleBulbState()
+function ToggleBulbState({setBulb,bulb})
 {
-  return <div>ToggleBulbState</div>
+  return <div>
+    <button onClick={()=>setBulb(!bulb)}>Switch</button>
+  </div>
 }
 export default App
