@@ -1,32 +1,36 @@
-import  { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from "react"
 
-function Scroll() {
-  const [messages, setMessages] = useState(["Hello!", "How are you?"]);
-  const chatBoxRef = useRef(null);
+const Scroll = () => {
+  const [messages,setMessages] = useState(["Hi, How are you ? ;)"]);
+  const ref = useRef(null);
 
-  // Function to simulate adding new messages
-  const addMessage = () => {
-    setMessages((prevMessages) => [...prevMessages, "New message!"]);
-  };
-
-  // Scroll to the bottom whenever a new message is added
-  useEffect(() => {
-    chatBoxRef.current.scrollTop = chatBoxRef.current.scrollHeight;
-  }, [messages]);
-
+  function addMessage()
+  {
+    setMessages((prevMessages) => [...prevMessages,"New Message"])
+  }
+  useEffect(()=>{
+    ref.current.scrollTop = ref.current.scrollHeight;
+  },[messages])
   return (
     <div>
       <div 
-        ref={chatBoxRef} 
-        style={{ height: "200px", border: "1px solid black",overflow:"scroll" }}
-      >
-        {messages.map((msg, index) => (
-          <div key={index}>{msg}</div>
-        ))}
+      ref={ref}
+      style={{
+        height:"300px",
+        border:"1px solid black",
+        overflowY:"scroll",
+      }}>
+        {
+          messages.map((msg,index)=>{
+            return(
+              <div id={index} key={index}>{msg}</div>
+            )
+          })
+        }
       </div>
       <button onClick={addMessage}>Add Message</button>
     </div>
-  );
+  )
 }
 
-export default Scroll;
+export default Scroll
