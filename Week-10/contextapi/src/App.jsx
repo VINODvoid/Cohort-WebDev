@@ -2,6 +2,7 @@ import {  useState,createContext , useContext } from 'react'
 import BulbOn from './assets/idea.png'
 import BulbOff from './assets/bulb.png'
 import './App.css'
+import TestContext from './TestContext';
 
 const BulbContext = createContext();
 
@@ -27,7 +28,7 @@ function App() {
       <BulbProvider>
         <Light/>
       </BulbProvider>
-      
+      <TestContext/>
     </div>
   )
 }
