@@ -8,7 +8,7 @@ function App() {
       <div>
         another child div
       </div>
-    
+    <p> paragraph tag</p>
     </div>
   )
 }
