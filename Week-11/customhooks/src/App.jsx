@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import './App.css'
+import { useFetch } from '../hooks/useFetch';
 
 // custom hooks
 function useCounter()
@@ -17,16 +18,7 @@ function useCounter()
 
 function App() { 
   const {count,increaseCount} = useCounter();
-  const [post , setPost ] = useState({});
-  async function getPosts()
-  {
-    const response = await fetch(`https://jsonplaceholder.typicode.com/todos/1`);
-    const json = await response.json();
-    setPost(json);
-  }
-  useState(()=>{
-    getPosts();
-  },[])
+  const post = useFetch();
   return (
     <div>
       <button onClick={increaseCount}>Add</button>
