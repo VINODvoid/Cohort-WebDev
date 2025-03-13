@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-export function useFetch(){
+export function usePosts(){
     const [post,setPost] = useState({});
     async function getPosts()
     {
@@ -14,3 +14,24 @@ export function useFetch(){
 
     return post;
 }
+
+export function useFetch(url){
+    const [data,setData] = useState({});
+    const [loading, setLoading]= useState(true);
+
+    async function getDetails() {
+        setLoading(true);
+        const response = await fetch(url);
+        const jsonData = await response.json();
+        setData(jsonData);
+        setLoading(false);
+    }
+    useEffect(()=>{
+        getDetails()
+    },[url]);
+    return {
+        data,
+        loading
+
+    };
+} 
