@@ -1,5 +1,6 @@
 // import { useState } from 'react'
 import { useDeBounce } from '../hooks/useDebounce';
+import useIsOnline from '../hooks/useIsOnline';
 import './App.css'
 // import { useFetch, usePosts } from '../hooks/useFetch';
 // import { usePrev } from '../hooks/usePrev';
@@ -30,6 +31,7 @@ function App() {
   //     <p>loading</p>
   //   </div>
   // }
+  const isOnline = useIsOnline();
   function searchBackend()
   {
     fetch('api.amazon.com/search/product');
@@ -63,6 +65,7 @@ function App() {
     // </div>
     <div>
       <input type="text"  onChange={debouncedfn}/>
+      {isOnline}
     </div>
   )
 }
