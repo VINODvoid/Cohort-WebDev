@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import { atom, selector } from "recoil";
 
 export const counterAtom = atom({
@@ -8,10 +7,10 @@ export const counterAtom = atom({
 
 export const evenSelector = selector({
     key:"isEvenSelector",
-    get:function(get){
+    get:function({get}){
         const currentCount = get(counterAtom);
         const isEven = (currentCount %2 == 0);
-        return ;
+        return isEven;
     }
 })
 
