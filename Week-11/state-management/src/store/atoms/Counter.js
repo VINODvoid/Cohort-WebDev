@@ -1,10 +1,17 @@
-import { atom } from "recoil";
+/* eslint-disable no-unused-vars */
+import { atom, selector } from "recoil";
 
 export const counterAtom = atom({
     key:"counter",
     default:0
 });
-export const loadingAtom = atom({
-    key:"loading",
-    default:true,
+
+export const evenSelector = selector({
+    key:"isEvenSelector",
+    get:function(get){
+        const currentCount = get(counterAtom);
+        const isEven = (currentCount %2 == 0);
+        return ;
+    }
 })
+
