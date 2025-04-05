@@ -37,11 +37,14 @@ function Increase()
 {
   const setCount = useSetRecoilState(counterAtom);
   return(
+    <div>
+
     <button onClick={()=>{
       setCount(c=>c-1)
     }}>
       Decrease
     </button>
+    </div>
   )
 }
 function CurrentValue()
