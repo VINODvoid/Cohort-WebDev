@@ -49,10 +49,12 @@ function CurrentValue()
   const count = useRecoilValue(counterAtom);
   return (
     <p>
-      {count}
+      <b>
+      {count}</b>
     </p>
   )
 }
+
 
 function IsEven()
 {
