@@ -16,6 +16,13 @@ function App() {
       <div className='col-span-4 bg-yellow-300'>Child 2</div>
       <div className='col-span-4 bg-red-400'>Child 3</div>
     </div>
+    <div>Responsiveness</div>
+    <div className='grid  grid-cols-12 '>
+      <div className='bg-green-300 col-span-12 sm:col-span-6'>Child 1</div>
+      <div className='bg-red-300 col-span-12 sm:col-span-4'>Child 2</div>
+      <div className='bg-pink-300 col-span-12 sm:col-span-2'>Child 3</div>
+    </div>
+
     </>
   )
 }
