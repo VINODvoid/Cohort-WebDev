@@ -22,6 +22,8 @@ function App() {
       <div className='bg-red-300 col-span-12 sm:col-span-4'>Child 2</div>
       <div className='bg-pink-300 col-span-12 sm:col-span-2'>Child 3</div>
     </div>
+    <div className='bg-[#95190C]'>Custom Color</div>
+    
 
     </>
   )
