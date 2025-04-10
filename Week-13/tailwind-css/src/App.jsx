@@ -24,7 +24,7 @@ function App() {
       <div className="bg-[#95190C] px-12">Custom Color for background</div>
       <div className="text-pink-700 px-12">Custom Color in text</div>
       
-      
+      <div className="rounded-4xl bg-amber-300">Border Radius</div>
       
     </>
   );
