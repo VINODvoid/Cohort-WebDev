@@ -6,7 +6,7 @@ const AgeVerification = () => {
     <div className='bg-[#002A5B] h-screen text-white'>
     <div className='flex justify-center items-center py-12'>
         <Projector/>
-        <span className='text-[#41E6D4] text-xl'>Webinaar</span>
+        <span className='text-[#41E6D4] text-xl mx-4'>Webinaar</span>
         <span className='text-xl'>.gg</span>
      </div>
     <div className=" flex flex-col justify-center items-center">
@@ -17,7 +17,7 @@ const AgeVerification = () => {
      </div>
      <div className='flex flex-col justify-center items-center p-4'>
         <input type="text" placeholder='Your birth year' className='bg-[#193F6A] p-4 rounded-lg m'/>
-        <button className='p-2  bg-gray-500 my-8 rounded-lg  '>Continue</button>
+        <button className='bg-gray-500 rounded-lg m-4 p-4'>Continue</button>
      </div>
     </div>
     </div>
