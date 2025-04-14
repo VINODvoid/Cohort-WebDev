@@ -1,17 +1,15 @@
 import "./App.css";
 import AgeVerification from "./components/AgeVerification";
-import Button from "./components/Button";
-import AgeVerification2 from "./components/Input";
+import EmailVerfication from "./components/EmailVerfication";
+import Otp from "./components/Otp";
 
 
 function App() {
   return (
     <>
       {/* <AgeVerification/> */}
-      {/* <Button disabled={true} onClick={()=>{console.log("button is pressed")}}>
-        Continue
-        </Button> */}
-       <AgeVerification2/>
+      {/* <EmailVerfication/> */}
+      <Otp/>
        
     </>
   );
