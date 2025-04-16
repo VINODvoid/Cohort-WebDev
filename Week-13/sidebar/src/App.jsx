@@ -4,9 +4,9 @@ function App() {
 
   return (
     <>
-      <div>
+      
         <p>Side bar</p>
-      </div>
+      
     </>
   )
 }
