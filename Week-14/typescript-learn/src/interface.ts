@@ -38,3 +38,12 @@ function isLegal(people:Person):boolean
 }
 
 
+let user:Person = {
+    firstName:"kal",
+    lastName:"lak",
+    age:34,
+    email:"kallak@gmail.com"
+}
+
+console.log(isLegal(user)?"Legally to Vote":"Not Able to Vote");
+
