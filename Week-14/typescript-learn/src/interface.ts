@@ -46,4 +46,3 @@ let user:Person = {
 }
 
 console.log(isLegal(user)?"Legally to Vote":"Not Able to Vote");
-
