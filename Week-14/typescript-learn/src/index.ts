@@ -40,3 +40,6 @@ DelayedFunction(greeting)
 // DelayedFunction(function(){
 //     console.log("Hi");  
 // })
+
+
+DelayedFunction(greeting)
