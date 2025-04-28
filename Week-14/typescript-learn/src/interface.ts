@@ -46,3 +46,16 @@ let user:Person = {
 }
 
 console.log(isLegal(user)?"Legally to Vote":"Not Able to Vote");
+
+
+let user2 : {
+    firstName:string,
+    lastName:string,
+    age:number,
+} = {
+    firstName:"nod",
+    lastName:"in",
+    age:45
+}
+
+console.log(user2);
