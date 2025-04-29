@@ -99,3 +99,25 @@ function employeDetails(employee : Employee):void
 
 employeDetails(employee1);
 employeDetails(employee2);
+
+type Empployee = {
+    name:string,
+    startDate :Date
+
+};
+type Mannager = {
+    name:string,
+    department : string
+};
+
+type TeamLead = Empployee & Mannager;
+
+
+let teamlead:TeamLead = {
+    name:"sushil",
+    department:"HR",
+    startDate : new Date(),
+    
+}
+
+
