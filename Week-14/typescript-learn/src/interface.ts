@@ -60,3 +60,42 @@ let user2 : {
 
 console.log(user2);
 
+
+interface Address {
+    city:string,
+    country:string,
+    pincode:number
+}
+
+interface Employee{
+    name:string,
+    age:number,
+    manager ?: {
+        status : boolean,
+        leads : number,
+    }
+    address ?: Address
+}
+
+interface Office {
+    address:Address
+}
+let employee1:Employee  = {
+    name:"raman",
+    age:34,
+    manager:{
+        status:true,
+        leads:5
+    }
+}
+let employee2 :Employee= {
+    name:"ragav",
+    age:41
+}
+function employeDetails(employee : Employee):void
+{
+    console.log("The Details of Employee are: "+employee.name + employee.age+ employee.manager?.leads  + employee.manager?.status)
+}
+
+employeDetails(employee1);
+employeDetails(employee2);
