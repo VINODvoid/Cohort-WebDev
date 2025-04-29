@@ -11,3 +11,5 @@ function sumOfAge(user1:User , user2:User):number
 
 let totalAge = sumOfAge({name:"oushen",age:30},{name:"ohoun",age:20});
 console.log(totalAge);
+
+
