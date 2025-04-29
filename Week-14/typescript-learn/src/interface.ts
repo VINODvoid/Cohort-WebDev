@@ -59,3 +59,4 @@ let user2 : {
 }
 
 console.log(user2);
+

@@ -15,5 +15,7 @@ function ageChecker (age:checkAge)
 }
 
 
+
+
 ageChecker(34);
 ageChecker("78");
