@@ -1,3 +1,5 @@
+import { nodeModuleNameResolver } from "typescript";
+
 interface Yan{
     name : string,
     age:number,
@@ -20,3 +22,26 @@ class Yen implements Yan {
 let y:Yen = new Yen("bolo",34);
 y.greet("hello buddy");
 
+
+
+abstract class IUser {
+    name:string
+    constructor (name:string)
+    {
+        this.name= name;
+    }
+    abstract greet():string;
+}
+
+class Lovable extends IUser
+{
+    name: string;
+    constructor ( name : string)
+    {
+        super(name);
+        this.name = name;
+    }
+    greet(){
+        return "hello "+ this.name
+    }
+}
