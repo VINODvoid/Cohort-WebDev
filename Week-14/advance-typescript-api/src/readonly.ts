@@ -15,11 +15,13 @@ type Angels = {
     age:number
 }
 
-let black:Angels =  {
+let black:Readonly<Angels> =  {
     name: "angels",
     age: 306,
     realm: "hell",
 }
 
 // so by readonly property we can make one of the pairs constants after initialisation
+
+// by using Readonly<> is makes whole type as constant internally too.
 console.log();
