@@ -1,10 +1,20 @@
 import express from "express";
 import dotenv from 'dotenv'
 import { ConnectDB } from "./db";
+import { UserRouter } from "./routes/user.routes";
+
+
+// Required to read values from .env
 dotenv.config();
 
 
 const app = express();
+app.use(express.json());
+
+
+// will be using routers 
+app.use("/api/v1",UserRouter)
+
 ConnectDB()
 .then(()=>{
     app.listen(process.env.PORT || 3000 , ()=>{
