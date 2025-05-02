@@ -1,4 +1,8 @@
-const Mens= new Map();
+type Man = {
+    name:string,
+    age:string
+}
+const Mens= new Map<number,Man>();
 
 Mens.set(1,{name:"man1",age:"23"})
 Mens.set(2,{name:"man2",age:"67"})
