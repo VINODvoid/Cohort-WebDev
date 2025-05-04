@@ -1,7 +1,13 @@
 import { Request,Response,NextFunction } from "express";
-
-export const userMiddleware = (req:Request,res:Response,next:NextFunction)=>{
-    const authHeader = req.headers;
-    console.log(authHeader);
-    
+import jwt from 'jsonwebtoken';
+export const userMiddleware = async(req:Request,res:Response,next:NextFunction)=>{
+    const tokenHeader = req.headers["authorization"];
+    if (!tokenHeader) {
+        return res.status(401).json({ message: "Authorization header is missing" });
+    }
+    const decodeToken = jwt.verify(tokenHeader, process.env.JWT_SECRET as string);
+       if(decodeToken)
+       {
+        next();
+       }
 }

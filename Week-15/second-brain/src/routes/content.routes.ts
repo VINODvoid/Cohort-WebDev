@@ -1,5 +1,5 @@
 import { Router } from "express";
 
-const ContentRouter = Router();
+export  const ContentRouter = Router();
 
 ContentRouter.post("/content",)
