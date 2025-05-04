@@ -14,6 +14,7 @@ app.use(express.json());
 
 // will be using routers 
 app.use("/api/v1",UserRouter)
+app.use("/api/v1",)
 
 ConnectDB()
 .then(()=>{

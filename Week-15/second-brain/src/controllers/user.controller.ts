@@ -52,7 +52,8 @@ export const loginUser = async (req: Request, res: Response) => {
             process.env.JWT_SECRET!
         )
         return res.status(200).json({
-            message:token,
+            message:"User Login Successful",
+            token
         })
     } catch (error) {
         if(error instanceof ZodError)
