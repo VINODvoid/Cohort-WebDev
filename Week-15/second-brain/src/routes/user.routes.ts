@@ -1,14 +1,20 @@
 import { Router } from 'express';
-import { registerUser } from '../controllers/user.controller';
+import { loginUser, registerUser } from '../controllers/user.controller';
 
 export const UserRouter = Router();
 
 
-UserRouter.post("/signup",function(req,res,next){
+UserRouter.post("/sign-up",function(req,res){
     try {
-        registerUser(req,res,next)
+        registerUser(req,res)
     } catch (error) {      
     }
 })
 
 
+UserRouter.post("/sign-in",function(req,res){
+    try {
+        loginUser(req,res);
+    } catch (error) {
+    }
+})
