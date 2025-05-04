@@ -1,9 +1,8 @@
 import { NextFunction, Request, Response } from 'express';
-import { z } from 'zod';
+import { z, ZodError } from 'zod';
 import { User } from '../models/user.model';
 import bcrypt from 'bcryptjs';
-
-
+import jwt from 'jsonwebtoken';
 const registerUserSchema = z.object({
     username: z.string().min(3).max(10),
     password: z.string().min(8).max(20)
@@ -47,8 +46,24 @@ export const loginUser = async (req: Request, res: Response) => {
         {
             return res.status(401).json({message:"Password is InCorrect"});
         }
-        
+        const token = jwt.sign({
+            id: existingUser._id
+        },
+            process.env.JWT_SECRET!
+        )
+        return res.status(200).json({
+            message:token,
+        })
     } catch (error) {
+        if(error instanceof ZodError)
+        {
+            return res.status(411).json({ errors: error.errors[0].message });
+        }
+        else{
+            return res.status(500).json({
+                message:"Internal Server Error"
+            })
+        }
 
     }
 }
