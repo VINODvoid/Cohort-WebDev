@@ -2,6 +2,7 @@ import express from "express";
 import dotenv from 'dotenv'
 import { ConnectDB } from "./db";
 import { UserRouter } from "./routes/user.routes";
+import { ContentRouter } from "./routes/content.routes";
 
 
 // Required to read values from .env
@@ -15,7 +16,7 @@ app.use(express.json());
 
 // will be using routers 
 app.use("/api/v1",UserRouter)
-app.use("/api/v1",)
+app.use("/api/v1",ContentRouter)
 
 ConnectDB()
 .then(()=>{
