@@ -1,13 +1,19 @@
 import { Request,Response,NextFunction } from "express";
 import jwt from 'jsonwebtoken';
-export const userMiddleware = async(req:Request,res:Response,next:NextFunction)=>{
+export const userMiddleware =  function(req:Request,res:Response,next:NextFunction){
     const tokenHeader = req.headers["authorization"];
     if (!tokenHeader) {
-        return res.status(401).json({ message: "Authorization header is missing" });
+         res.status(401).json({ message: "Authorization header is missing" });
+         return
     }
-    const decodeToken = jwt.verify(tokenHeader, process.env.JWT_SECRET as string);
-       if(decodeToken)
-       {
-        next();
-       }
+    try {
+        const decodeToken =  jwt.verify(tokenHeader, process.env.JWT_SECRET as string);
+           if(decodeToken)
+           {
+            (req as any).user = decodeToken
+            next();
+           }
+    } catch (error) {
+         res.status(403).json({message:"Invalid or Expired token"})
+    }
 }
