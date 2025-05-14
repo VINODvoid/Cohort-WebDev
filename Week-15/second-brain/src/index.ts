@@ -3,6 +3,7 @@ import dotenv from 'dotenv'
 import { ConnectDB } from "./db";
 import { UserRouter } from "./routes/user.routes";
 import { ContentRouter } from "./routes/content.routes";
+import { LinkRouter } from "./routes/link.routes";
 
 
 // Required to read values from .env
@@ -15,9 +16,9 @@ app.use(express.json());
 
 
 // will be using routers 
-app.use("/api/v1",UserRouter)
-app.use("/api/v1",ContentRouter)
-
+app.use("/api/v1",UserRouter);
+app.use("/api/v1",ContentRouter);
+app.use("/api/v1",LinkRouter);
 ConnectDB()
 .then(()=>{
     app.listen(process.env.PORT || 3000 , ()=>{
