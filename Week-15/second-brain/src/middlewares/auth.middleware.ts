@@ -5,7 +5,8 @@ import { User } from "../models/user.model";
 export const userMiddleware = function(req: Request, res: Response, next: NextFunction) {
     const tokenHeader = req.headers["authorization"];
     if (!tokenHeader) {
-        return res.status(401).json({ message: "Authorization header is missing" });
+        res.status(401).json({ message: "Authorization header is missing" });
+        return;
     }
 
     try {
