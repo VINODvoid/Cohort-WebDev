@@ -19,16 +19,31 @@ export const addContent = async(req:Request,res:Response)=>{
         })
     }
 }
-export const displayContent = (req:Request,res:Response)=>{
+export const displayContent = async(req:Request,res:Response)=>{
     try {
         //@ts-ignore
         const userId= req.userId;
 
-        const content = Content.find({userId}).populate("userId","username");
+        const content = await Content.find({userId}).populate("userId","username");
         res.json(content);
     } catch (error) {
         res.status(403).json({
             message:"Not able to display contents"
+        })
+    }
+}
+export const deleteContent = async(req:Request,res:Response)=>{
+    try {
+        const contentId = req.body.contentId;
+
+    // @ts-ignore
+        await Content.deleteMany({contentId, userId: (req as any).userId});
+        res.json({
+            message:"Content is Deleted"
+        })
+    } catch (error) {
+        res.status(403).json({
+            message:"Unable to Delete the content"
         })
     }
 }
