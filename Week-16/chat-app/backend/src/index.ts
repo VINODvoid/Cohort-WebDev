@@ -1,18 +1,30 @@
 import { WebSocketServer,WebSocket} from "ws";
 
+interface User {
+    socket:WebSocket,
+    room:string,
+}
+
 const wss = new WebSocketServer({port:8080});
 
-let count = 1;
-let users:WebSocket[] =[];
+let users:User[] =[];
 wss.on("connection",(socket)=>{
-    users.push(socket);
-    console.log("user "+count+" is connected");
-    count +=1;
+    
+    
+    socket.on("close",()=>{
+        console.log("one user disconnected");
+        
+    })
     socket.on("message",(message)=>{
-        console.log("message "+message.toString());
-        users.map((s)=>{
-            s.send(message.toString()+ " from user "+count);
+       const parsedMessage = JSON.parse(message.toString());
+       if(parsedMessage.type === "join")
+       {
+        users.push({
+            socket,
+            room:parsedMessage.payload.roomId,
         })
+       }
+
     })
 
 });
