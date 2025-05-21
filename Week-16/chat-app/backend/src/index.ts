@@ -1,14 +1,18 @@
-import { WebSocketServer } from "ws";
+import { WebSocketServer,WebSocket} from "ws";
 
-const wss = new WebSocketServer({port:3000});
+const wss = new WebSocketServer({port:8080});
 
 let count = 1;
+let users:WebSocket[] =[];
 wss.on("connection",(socket)=>{
-    count +=1;
+    users.push(socket);
     console.log("user "+count+" is connected");
+    count +=1;
     socket.on("message",(message)=>{
         console.log("message "+message.toString());
-        socket.send(message.toString()+ " from server");
+        users.map((s)=>{
+            s.send(message.toString()+ " from user "+count);
+        })
     })
 
 });
