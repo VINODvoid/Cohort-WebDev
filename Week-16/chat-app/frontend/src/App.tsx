@@ -1,35 +1,79 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useEffect, useRef, useState } from "react";
+import "./App.css";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [messages, setMessages] = useState(["hi how you", "hello", "whats upp"]);
+  const inputRef = useRef<HTMLInputElement>(null);
+  const wsRef = useRef<WebSocket | null>(null); // WebSocket reference
+
+  useEffect(() => {
+    const ws = new WebSocket("http://localhost:8080");
+    wsRef.current = ws;
+
+    ws.onmessage = (event) => {
+      setMessages((m) => [...m, event.data]);
+    };
+
+    ws.onopen = () => {
+      ws.send(
+        JSON.stringify({
+          type: "join",
+          payload: {
+            roomId: "red",
+          },
+        })
+      );
+    };
+
+    return () => {
+      ws.close(); 
+    };
+  }, []);
+
+  function sendMessage() {
+    const message = inputRef.current?.value;
+    if (message && wsRef.current?.readyState === WebSocket.OPEN) {
+      wsRef.current.send(
+        JSON.stringify({
+          type: "chat",
+          payload: {
+            message: message,
+          },
+        })
+      );
+      if (inputRef.current) {
+        inputRef.current.value = ""; 
+      }
+    }
+  }
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <div className="h-screen bg-black flex flex-col text-white">
+      <div className="h-[95vh] p-12 overflow-y-auto">
+        {messages.map((message, idx) => (
+          <div key={idx} className="m-8 flex">
+            <span className="p-4 bg-slate-900 text-white rounded-xl text-2xl">
+              {message}
+            </span>
+          </div>
+        ))}
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
+      <div className="flex w-full">
+        <input
+          type="text"
+          className="p-4 m-4 rounded-2xl w-[90%] bg-slate-900 flex-1 border-none"
+          ref={inputRef}
+          placeholder="Enter the message"
+        />
+        <button
+          className="rounded-xl p-4 m-2 text-2xl border-blue-600 border bg-blue-400"
+          onClick={sendMessage}
+        >
+          Send
         </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    </div>
+  );
 }
 
-export default App
+export default App;
