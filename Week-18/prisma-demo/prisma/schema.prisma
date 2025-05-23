@@ -20,12 +20,14 @@ model Customer {
   email    String @unique
   password String
   age      Int
+  todos    Todo[]
 }
 
 model Todo {
-  id          Int     @id @default(autoincrement())
+  id          Int      @id @default(autoincrement())
   title       String
   description String
   done        Boolean
-  userId      Int
+  customerId  Int
+  customer    Customer @relation(fields: [customerId], references: [id])
 }
