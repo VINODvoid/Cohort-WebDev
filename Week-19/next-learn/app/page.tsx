@@ -14,24 +14,16 @@ interface UserData {
 }
 export default async function Home() {
   const [loading ,setLoading] = useState(true);
-  const userData:UserData = await User();
+  const userData = await User();
   return (
     <>
     <div className="flex flex-col h-screen "> 
       <div className=" flex items-center justify-center">
         {
           
-          (userData && (<div className="flex flex-col justify-center items-stretch">
-            <div>
-            {userData.name}
-            </div>
-            <div>
-            {userData.email}
-            </div>
-            <div>
-            {userData.address.city}
-            </div>
-          </div>))
+          (userData && (
+            <div>{userData}</div>
+          ))
         
 
         }
