@@ -1,36 +1,18 @@
 "use client"
-import axios from "axios";
-import { useEffect, useState } from "react";
-import { User } from "./user";
+import { User } from "./user/page";
 
-interface UserData {
-  name:string,
-  email:string,
-  address:{
-    city:string,
-    state:string,
-    houseNumber:string
-  }
-}
+
 export default async function Home() {
-  const [loading ,setLoading] = useState(true);
-  const userData = await User();
+  const data = await User();
   return (
-    <>
-    <div className="flex flex-col h-screen "> 
-      <div className=" flex items-center justify-center">
-        {
-          
-          (userData && (
-            <div>{userData}</div>
-          ))
-        
-
-        }
+    <div>
+      {data?.name}
+      <div>
+      {data?.email}
+      {data?.address.city}
       </div>
     </div>
-    </>
-  );
+  )
 }
 
 
