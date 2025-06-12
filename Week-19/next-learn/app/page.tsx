@@ -1,18 +1,23 @@
 "use client"
-import { User } from "./user/page";
+import axios from "axios";
 
 
 export default async function Home() {
-  const data = await User();
+
   return (
     <div>
-      {data?.name}
-      <div>
-      {data?.email}
-      {data?.address.city}
+      
       </div>
-    </div>
   )
 }
 
 
+
+async function getUserDetails() {
+  try {
+    const response = await axios.get("http://localhost:3000/api/user")
+	  return response.data;
+  }  catch(e) {
+    console.log(e);
+  }
+}
