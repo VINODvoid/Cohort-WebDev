@@ -3,11 +3,11 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import React, { useRef } from "react";
 import axios from "axios";
-import { PassThrough } from "stream";
+import { useRouter } from "next/navigation";
 const Signup = () => {
     const emailRef= useRef<HTMLInputElement>(null);
     const passwordRef= useRef<HTMLInputElement>(null);
-
+    const router = useRouter();
   return (
     <div className="flex items-center justify-center h-screen">
       <div className="w-full max-w-md border rounded-xl p-6 shadow-md space-y-6">
@@ -48,7 +48,8 @@ const Signup = () => {
             console.log(email,password);
             axios.post("http://localhost:3000/api/v1/signup",{
                 email,password
-            })
+            });
+            router.push("/signin");
           }}>
             Sign up
           </Button>
