@@ -5,8 +5,8 @@ import React, { useRef } from "react";
 import axios from "axios";
 import { PassThrough } from "stream";
 const Signup = () => {
-    const emailRef= useRef(null);
-    const passwordRef= useRef(null);
+    const emailRef= useRef<HTMLInputElement>(null);
+    const passwordRef= useRef<HTMLInputElement>(null);
 
   return (
     <div className="flex items-center justify-center h-screen">
@@ -43,7 +43,12 @@ const Signup = () => {
             <span className="font-extralight">Already user ? </span>
             <span className="font-medium from-neutral-500 mr-4 underline m-2" ><Link href={"/signin"}>sign in</Link> </span>
           <Button variant="outline" size="sm" onClick={()=>{
-            axios.post("http://localhost:3000/api/v1/signup")
+            const email = emailRef.current?.value;
+            const password = passwordRef.current?.value;
+            console.log(email,password);
+            axios.post("http://localhost:3000/api/v1/signup",{
+                email,password
+            })
           }}>
             Sign up
           </Button>

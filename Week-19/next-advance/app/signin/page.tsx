@@ -35,9 +35,9 @@ const Signin = () => {
 
         <div className="text-center flex justify-start items-center p-2 ">
             <span className="font-extralight">create user ?</span>
-            <span className="font-medium from-neutral-500 mr-4 underline m-2" ><Link href={"/signup"}>sign in</Link> </span>
+            <span className="font-medium from-neutral-500 mr-4 underline m-2" ><Link href={"/signup"}>sign up</Link> </span>
           <Button variant="outline" size="sm" onClick={()=>{
-            axios.post("http://localhost:3000/api/v1/signup")
+            axios.post("http://localhost:3000/api/v1/signin")
           }}>
             Sign in
           </Button>
