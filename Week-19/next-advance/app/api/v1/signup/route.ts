@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { PrismaClient } from "@/lib/generated/prisma";
 import { emitWarning } from "process";
-const client = new PrismaClient();
+import 
 export async function POST(req:NextRequest)
 {
     const data = await req.json();
@@ -14,5 +14,13 @@ export async function POST(req:NextRequest)
     return NextResponse.json({
         message:"you have signed up",
         data
+    })
+}
+
+export async function GET(req:NextRequest)
+{
+    const user = await client.user.findFirst();
+    return NextResponse.json({
+        user
     })
 }
