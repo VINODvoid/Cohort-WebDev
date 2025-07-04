@@ -15,4 +15,4 @@ const page = async({params}:{params:{
   )
 }
 
-export default page
+export default page 
